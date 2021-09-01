@@ -50,29 +50,31 @@ Payload Request: JSON de Usuário com Array de Contatos
     "documento": 100
 }
 
-Editar contatos do usuário por Documento (apaga o Usuario e insere um novo)
+Editar contatos do usuário por Documento (apaga e insere os novos)
 
 PUT http://0.0.0.0:5000/api/usuarios/{documento}
 
 Payload Request: JSON de Array de contatos
+
+
 {
-    "nome": "Teste2",
     "contatos": [
         {
-            "principal": true,
-            "email": "altera1@gmail.com",
-            "telefone": 11978451236,
-            "id": 1
-        },
-        {
             "principal": false,
-            "email": "altera2@gmail.com",
-            "telefone": 11978451236,
-            "id": 2
+            "email": "angel@gmail.com",
+            "id": 1,
+            "telefone": 11978451236
+        }, 
+        {
+            "principal": true,
+            "email": "angela2@gmail.com",
+            "id": 1,
+            "telefone": 11999451236
         }
     ],
+    "documento": 103,
     "id": 1,
-    "documento": 102
+    "nome": "Angelina Jolie Editada "
 }
 
 
