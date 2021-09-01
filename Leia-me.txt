@@ -1,0 +1,87 @@
+Requisitos:
+
+API na linguagem Python em flask e banco de dados em sqlite para gerência de usuários. 
+
+Tem as seguintes rotas:                                                                           
+a) Cadastro de usuario com nome (texto), documento (numerico) e um array de contatos contendo email (texto), telefone (numerico), flag principal (bit) (metodo post)
+Obs: a flag principal é um campo bit que determina qual o contato principal
+b) Busa usuario pelo filtro documento (metodo get)
+c) Alterar dados usuario, email e contato (metodo put)
+d) Deletar usuario pelo documento (metodo del)
+2 - Subir os arquivos no git hub
+a) Fornecer a caminho do github.
+b) criar um arquivo readme com as instruções da api.
+
+
+Para rodar o projeto:
+
+Comando no terminal:
+	pip install -r requirements.txt
+
+Rodar com FLASK a classe app.py
+
+
+Link publico para collection de testes POSTMAN:
+https://www.getpostman.com/collections/35f7d67f93b6812a9874
+
+
+Adicionar Usuario com Contatos:
+
+POST http://0.0.0.0:5000/api/usuarios
+
+Payload Request: JSON de Usuário com Array de Contatos
+{
+    "nome": "Teste1",
+    "contatos": [
+        {
+            "principal": true,
+            "email": "cria1@gmail.com",
+            "telefone": 11978451236,
+            "id": 1
+        },
+        {
+            "principal": false,
+            "email": "cria2@gmail.com",
+            "telefone": 11978451236,
+            "id": 2
+        }
+    ],
+    "id": 1,
+    "documento": 100
+}
+
+Editar contatos do usuário por Documento (apaga o Usuario e insere um novo)
+
+PUT http://0.0.0.0:5000/api/usuarios/{documento}
+
+Payload Request: JSON de Array de contatos
+{
+    "nome": "Teste2",
+    "contatos": [
+        {
+            "principal": true,
+            "email": "altera1@gmail.com",
+            "telefone": 11978451236,
+            "id": 1
+        },
+        {
+            "principal": false,
+            "email": "altera2@gmail.com",
+            "telefone": 11978451236,
+            "id": 2
+        }
+    ],
+    "id": 1,
+    "documento": 102
+}
+
+
+Deletar usuarios por Documento
+DELETE http://0.0.0.0:5000/api/usuarios/{documento}
+
+Busca todos os usuários salvos
+GET http://0.0.0.0:5000/api/usuarios/
+
+Busca Usuário por CPF
+GET http://0.0.0.0:5000/api/usuarios/{documento}
+
